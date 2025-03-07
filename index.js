@@ -2,6 +2,7 @@ import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
 import dspaceRoutes from './routes/dspaceRoutes.js';
+import cors from 'cors'; 
 
 const { Pool } = pkg;
 
@@ -9,6 +10,9 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Enable CORS for all origins
+app.use(cors()); // This will allow all origins to connect
 
 // PostgreSQL database connection
 export const pool = new Pool({
